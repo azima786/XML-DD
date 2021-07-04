@@ -137,7 +137,6 @@ public void verifysummaryandSearchBarButton() {
 }
 	public void insertnameonsearchbar() {
 		WaitforElement(driver, 10, SearchBaronListCustomer);
-		
 		SearchBaronListCustomer.sendKeys(enteredName);
 	}
 }

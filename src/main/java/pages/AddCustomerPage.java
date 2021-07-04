@@ -37,8 +37,14 @@ public class AddCustomerPage extends BasePage {
 	WebElement SAVE_BUTTON_ON_ADD_CONTACTS;
 	@FindBy(how = How.XPATH, using = "//*[@id=\"summary\"]")
 	WebElement SUMMARY_BUTTON_SUMMARY_PAGE;
-
+	@FindBy(how = How.XPATH, using = "//*[@id=\"page-wrapper\"]/div[3]/div[1]/div/div/div[1]/a[1]")
+	WebElement AddCustomerListCustomer;	
+	@FindBy(how = How.XPATH, using = "//*[@id=\"foo_filter\"]")
+	WebElement SearchBaronListCustomer;	
+	
+	
 	public void enterfullname(String fullname) {
+		WaitforElement(driver, 10, FullName);
 		enteredName = (randomnumber(999) + fullname);
 		FullName.sendKeys(randomnumber(999) + fullname);
 	}
@@ -84,6 +90,10 @@ public class AddCustomerPage extends BasePage {
 		WaitforElement(driver, 10, SUMMARY_BUTTON_SUMMARY_PAGE);
 		Assert.assertEquals(SUMMARY_BUTTON_SUMMARY_PAGE.getText(), "Summary", "Wrong Page!!!");
 	}
+	
+	public void AddCustomerListCustomer() {
+		AddCustomerListCustomer.click();
+	}
 
 	public void VerifyEnteredNameAndDelete() {
 
@@ -102,8 +112,32 @@ public class AddCustomerPage extends BasePage {
 		
 					
 			}
-		}}}
+			
+		}}
 	
+	public void SearchBaronListCustomer() {
+		SearchBaronListCustomer.click();
+	}
 
+public void verifysummaryandSearchBarButton() {
+	String BeforeXPath = "//tbody/tr[";
+	String AfterPath = "]/td[3]";
+
+	for (int i = 1; i <= 10; i++) {
+		String name = driver.findElement(By.xpath(BeforeXPath + i + AfterPath)).getText();
+		System.out.println(name);
+		
+		if(name.contains(enteredName)) {
+			System.out.println("Entered name exist");
+			driver.findElement(By.xpath(BeforeXPath + i + "]/td[7]/a[1]")).click();
+		}
+	break;	
+	}
 	
-
+}
+	public void insertnameonsearchbar() {
+		WaitforElement(driver, 10, SearchBaronListCustomer);
+		
+		SearchBaronListCustomer.sendKeys(enteredName);
+	}
+}

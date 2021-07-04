@@ -23,11 +23,11 @@ public class BasePage {
 		return randomnumber;
 	}
 	
-	public void WaitforElement(WebDriver driver, int timeInSeconds, WebElement element ) {
+	
+	
+	public void WaitforElement(WebDriver driver, int timeInSeconds, WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, timeInSeconds);
 		wait.until(ExpectedConditions.visibilityOfAllElements(element));
 		
 	}
-	
-	
 }

@@ -30,8 +30,9 @@ public void clickonAddCustomer() {
 	AddCustomer.click();
 }
 
-public void ClickonlistCustomer() {
+public void ClickonListCustomer(){
 	ListCustomer.click();
 }
-
 }
+
+
